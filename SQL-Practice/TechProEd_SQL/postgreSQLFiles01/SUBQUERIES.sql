@@ -1,4 +1,4 @@
-﻿CREATE TABLE calisanlar2
+CREATE TABLE calisanlar2
 (
 id int,
 isim VARCHAR(50),
@@ -57,5 +57,4 @@ where marka_isim IN(select isyeri from calisanlar2 where sehir='Bursa');
 -- İzmir'de calisani olan markalarin marka id'lerini ve calisan sayilarini listeleyiniz.
 select marka_id,calisan_sayisi from markalar
 where marka_isim IN(select isyeri from calisanlar2 where sehir='Izmir');
-
 

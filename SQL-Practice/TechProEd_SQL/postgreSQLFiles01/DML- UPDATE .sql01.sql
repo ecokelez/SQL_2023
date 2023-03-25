@@ -1,4 +1,4 @@
-﻿-- DML --> UPDATE --> Tablodaki verileri günceller
+-- DML --> UPDATE --> Tablodaki verileri günceller
 CREATE TABLE tedarikciler -- parent
 (
 vergi_no int PRIMARY KEY,
@@ -30,23 +30,19 @@ select * from urunler
 -- vergi_no’su 102 olan tedarikcinin firma ismini 'Vestel' olarak güncelleyeniz.
 UPDATE tedarikciler
 SET firma_ismi = 'Vestel' WHERE vergi_no=102
-
 -- vergi_no’su 101 olan tedarikçinin firma ismini 'casper' ve irtibat_ismi’ni 'Ali Veli' olarak güncelleyiniz.
 UPDATE tedarikciler
 set firma_ismi = 'casper', irtibat_ismi = 'Ali Veli' where vergi_no =101;
-
 --  urunler tablosundaki 'Phone' değerlerini 'Telefon' olarak güncelleyiniz.
 UPDATE urunler
 SET urun_isim = 'TELEFON'
 WHERE urun_isim = 'Phone'
-
 --  urunler tablosundaki urun_id değeri 1004'ten büyük olanların urun_id’sini 1 arttırın.
 UPDATE urunler
 SET urun_id = urun_id+1 where urun_id > 1004
 -- urunler tablosundaki tüm ürünlerin urun_id değerini ted_vergino sutun değerleri ile toplayarak güncelleyiniz.
 update urunler
 set urun_id=ted_vergino+urun_id ;
-
 --  urunler tablosundan Ali Bak’in aldigi urunun ismini, tedarikci  tablosunda irtibat_ismi 
 -- 'Adam Eve' olan firmanın ismi (firma_ismi) ile degistiriniz.
 -- Bu soruda tedarikçiler ve urunler tablosunu yeniden oluşturduk
@@ -62,4 +58,3 @@ where urun_isim='Laptop';
 
 select * from tedarikciler
 select * from urunler
-

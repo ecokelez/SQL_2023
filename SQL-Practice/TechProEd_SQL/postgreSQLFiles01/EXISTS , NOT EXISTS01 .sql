@@ -1,7 +1,8 @@
-﻿-- EXISTS , NOT EXISTS --
+-- EXISTS , NOT EXISTS --
 -- EXISTS condition subquerylerde kullanilir
 -- IN ifadesinin kullanimina benzer
--- EXISTS , NOT EXISTS ifadeleri de altsorgudan getirilen degerlerin ------içerisinde bir degerin olmasi veya olmamasi durumunda islem yapilmasini --saglar
+-- EXISTS , NOT EXISTS ifadeleri de altsorgudan getirilen degerlerin icerisinde
+--bir degerin olmasi veya olmamasi durumunda islem yapilmasini saglar
 -- Exists true false gibidir --> Boolean
 
 CREATE TABLE mart(

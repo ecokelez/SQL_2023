@@ -1,4 +1,4 @@
-﻿--Personel isminde bir tablo oluşturalım
+--Personel isminde bir tablo oluşturalım
 create table personel(
 pers_id int,
 isim varchar(30),
@@ -7,7 +7,6 @@ maas int,
 sirket varchar(20),
 adres varchar(50)
 );
-
 --Varolan personel tablosundan pers_id,sehir,adres fieldlarına sahip personel_adres adında yeni tablo olusturalım
 create table personel_adres
 as
@@ -33,12 +32,9 @@ INSERT into student VALUES ('1004','Derya Can',55);
 insert into student(st_name,age) values ('Murat Can',65);
 
 --DQL --> Data Query Lang.
---SELECT: Veritabanındaki verileri alır.
---SELECT komutu ile veritabanında yer alan mevcut kayıtların bir kısmını veya tamamını tanımlanan koşullara bağlı olarak alır.
-
+--SELECT
 select * from student;
 select st_name from student;
-
 --SELECT KOMUTU WHERE KOŞULU
 select * from student WHERE age>35;
 
@@ -46,7 +42,6 @@ select * from student WHERE age>35;
 --Begin - Savepoint - rollback - commit
 --Transaction veritabanı sistemlerinde bir işlem başladığında başlar ve işlem bitince sona erer
 --Bu işlemler veri tabanı oluşturma, veri silme, veri güncelleme, veriyi geri getirme gibi işlemler olabilir
-
 CREATE TABLE ogrenciler2(
 id serial,
 isim VARCHAR(50),
@@ -79,7 +74,6 @@ commit;
 --DELETE FROM tablo_adi --> Tablo'nun tüm içeriğini siler
 -- Veriyi seçerek silmek için WHERE koşulu kullanılır
 -- DELETE FROM tablo_adı WHERE sutun_adi = veri --> Tablodaki istediğimiz veriyi siler
-
 
 CREATE TABLE ogrenciler(
 id int,
@@ -120,7 +114,6 @@ select from ogrenciler;
 TRUNCATE TABLE ogrenciler
 
 -- DDL - Data Definition Lang. 
---DDL komutları ile veritabanı ve tabloları oluşturma, değiştirme ve silme işlemleri yapılır:
 -- CREATE - ALTER - DROP
 -- ALTER TABLE --
 -- ALTER TABLE tabloda ADD, TYPE, SET, RENAME veya DROP COLUMNS işlemleri için kullanılır
@@ -190,7 +183,6 @@ INSERT INTO calısanlar VALUES('', 'osman', 2000, '2018-04-14');
 --INSERT INTO calısanlar VALUES( null, 'filiz ' ,12000, '2018-04-14'); -- PRIMARY KEY
 
 select * from calisanlar
-
 -- FOREIGN KEY--
 CREATE TABLE adresler
 (
@@ -204,70 +196,3 @@ INSERT INTO adresler VALUES('10003','Mutlu Sok', '40.Cad.','IST');
 INSERT INTO adresler VALUES('10003','Can Sok', '50.Cad.','Ankara');
 INSERT INTO adresler VALUES('10002','Ağa Sok', '30.Cad.','Antep');
 select * from adresler;
-
-
- Veri Kontrol Dili (Data Control Language - DCL) 
-DCL komutları ile kullanıcılara veritabanı ve tablolar için yetki verilir veya geri alınır: 
-GRANT : Bir kullanıcıya yetki vermek için kullanılır.
-REVOKE : Bir kullanıcıya verilen yetkiyi geri almak için kullanılır.
-
-SQL komutları 4 ana gruba ayrılır: 
-
-1. Veri Sorgulama Dili (Data Query Language - DQL) 
-DQL içindeki SELECT komutu ile veritabanında yer alan mevcut kayıtların bir kısmını veya tamamını tanımlanan koşullara bağlı olarak alır. 
-SELECT : Veritabanındaki verileri alır. 
-
-2. Veri Kullanma Dili (Data Manipulation Language - DML) 
-DML komutları ile veritabanlarında bulunan verilere işlem yapılır. 
-DML ile veritabanına yeni kayıt ekleme, mevcut kayıtları güncelleme ve silme işlemleri yapılır. 
-INSERT : Veritabanına yeni veri ekler. 
-UPDATE : Veritabanındaki verileri günceller. 
-DELETE : Veritabanındaki verileri siler. SQL Komutlari 
-
-       -- DELETE - TRUNCATE --
--- TRUNCATE komutu DELETE komutu gibi bir tablodaki verilerin tamamını siler.
-       -- Ancak, seçmeli silme yapamaz
-
-
-3. Veri Tanimlama Dili (Data Definition Language - DDL) 
-DDL komutları ile veritabanı ve tabloları oluşturma, değiştirme ve silme işlemleri yapılır: 
-CREATE : Bir veritabanı veya veritabanı içinde tablo oluşturur. 
-ALTER : Bir veritabanı veya veritabanı içindeki tabloyu günceller. 
-DROP : Bir veritabanını veya veritabanı içindeki tabloyu siler. 
-
-       -- CONSTRANINT -- Kısıtlamalar
--- Primary Key --> Bir sutunun NULL içermemesini ve sutundaki verilerin BENZERSİZ olmasını sağlar (NOT NULL - UNIQUE)
--- FOREGIN KEY --> Başka bir tablodaki PRİMARY KEY'i referans göstermek için kullanılır. Böylelikle, tablolar arasında ilişki kurmuş oluruz.
--- UNIQUE --> Bir sutundaki tüm değerlerin BENZERSİZ yani tek olmasını sağlar
--- NOT NULL --> Bir sutunun NULL içermemesini yani boş olmamasını sağlar
--- NOT NULL kısıtlaması için CONSTRAINT ismi tanımlanmaz. Bu kısıtlama veri türünden hemen sonra yerleştirilir
--- CHECK --> Bir sutuna yerleştirilebilecek değer aralığını sınırlamak için kullanılır.
-
-
-
-4. Veri Kontrol Dili (Data Control Language - DCL) 
-DCL komutları ile kullanıcılara veritabanı ve tablolar için yetki verilir veya geri alınır: 
-GRANT : Bir kullanıcıya yetki vermek için kullanılır. 
-REVOKE : Bir kullanıcıya verilen yetkiyi geri almak için kullanılır.
-
-
---TCL - Transaction Control Lang.
---Begin - Savepoint - rollback - commit
---Transaction veritabanı sistemlerinde bir işlem başladığında başlar ve işlem bitince sona erer
---Bu işlemler veri tabanı oluşturma, veri silme, veri güncelleme, veriyi geri getirme gibi işlemler olabilir
---Transaction kullanımında SERIAL data türü kullanımı tavsiye edilmez.
---savepointten sonra eklediğimiz veride sayaç mantığı ile çalıştığı için
---sayacta en son hangi sayıda kaldıysa ordan devam eder
--- NOT : PostgreSQL de transaction kullanımı için 'Begin' komutuyla başlarız sonrasında tekrar yanlış bir veriyi
--- düzeltmek veya bizim için önemli olan verilerden sonra ekleme yapabilmek için 'SAVEPOINT savepointadi'
--- kullanırız ve bu savepointe dönebilmek için 'ROLLBACK TO savepointismi' 
--- komutunu kullanırız ve rollback çalıştırıldığında savepoint yazdığımız satırın üstündeki verileri tabloda bize 
--- verir ve son olarak Transaction'ı sonlandırmak için mutlaka 'COMMIT' komutu kullanırız. MySQL de 
--- transaction olmadanda kullanılır
-
--- DML - DELETE -
---DELETE FROM tablo_adi --> Tablo'nun tüm içeriğini siler
--- Veriyi seçerek silmek için WHERE koşulu kullanılır
--- DELETE FROM tablo_adı WHERE sutun_adi = veri --> Tablodaki istediğimiz veriyi siler
-
-
